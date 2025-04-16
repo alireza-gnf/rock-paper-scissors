@@ -11,16 +11,16 @@
       const PAPER = "Paper";
       const SCISSORS = "Scissors";
       let gameChoices = [ROCK, PAPER, SCISSORS];
-      let playerScore = 0;
+      let humanScore = 0;
       let computerScore = 0;
 
       playGame();
       function playGame() {
         resetGame();
-        while (playerScore !== 5 && computerScore !== 5) {
+        while (humanScore !== 5 && computerScore !== 5) {
           playRound(getHumanChoice(), getComputerChoice());
-          if (playerScore === 5 || computerScore === 5) {
-            if (playerScore === 5) {
+          if (humanScore === 5 || computerScore === 5) {
+            if (humanScore === 5) {
               console.log("Congratulations! You win.");
             } else {
               console.log("You lose!");
@@ -40,19 +40,19 @@
           (humanChoice === PAPER && computerChoice === ROCK)
         ) {
           console.log(`You win! ${humanChoice} beats ${computerChoice}`);
-          playerScore++;
+          humanScore++;
         } else if (humanChoice === computerChoice) {
           console.log("It's a draw!");
         } else {
           console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
           computerScore++;
         }
-        console.log(`You: ${playerScore} Computer: ${computerScore}`);
+        console.log(`You: ${humanScore} Computer: ${computerScore}`);
       }
 
       function resetGame() {
         console.clear();
-        playerScore = 0;
+        humanScore = 0;
         computerScore = 0;
       }
 
