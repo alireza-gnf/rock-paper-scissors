@@ -4,74 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rock, Paper, Scissors</title>
+    <script defer src="./script.js"></script>
   </head>
-  <body>
-    <script>
-      const ROCK = "Rock";
-      const PAPER = "Paper";
-      const SCISSORS = "Scissors";
-      let gameChoices = [ROCK, PAPER, SCISSORS];
-      let humanScore = 0;
-      let computerScore = 0;
-
-      playGame();
-      function playGame() {
-        resetGame();
-        while (humanScore !== 5 && computerScore !== 5) {
-          playRound(getHumanChoice(), getComputerChoice());
-          if (humanScore === 5 || computerScore === 5) {
-            if (humanScore === 5) {
-              console.log("Congratulations! You win.");
-            } else {
-              console.log("You lose!");
-            }
-            const playAgain = prompt("Play again [Y]es?").toLowerCase();
-            if (playAgain === "y" || playAgain === "yes") {
-              resetGame();
-            }
-          }
-        }
-      }
-
-      function playRound(humanChoice, computerChoice) {
-        if (
-          (humanChoice === ROCK && computerChoice === SCISSORS) ||
-          (humanChoice === SCISSORS && computerChoice === PAPER) ||
-          (humanChoice === PAPER && computerChoice === ROCK)
-        ) {
-          console.log(`You win! ${humanChoice} beats ${computerChoice}`);
-          humanScore++;
-        } else if (humanChoice === computerChoice) {
-          console.log("It's a draw!");
-        } else {
-          console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
-          computerScore++;
-        }
-        console.log(`You: ${humanScore} Computer: ${computerScore}`);
-      }
-
-      function resetGame() {
-        console.clear();
-        humanScore = 0;
-        computerScore = 0;
-      }
-
-      function getHumanChoice() {
-        let input = parseInt(prompt("1 Rock, 2 Paper, 3 Scissors:"));
-        while (isInvalid(input)) {
-          console.log("Invalid input");
-          input = parseInt(prompt("1 Rock, 2 Paper, 3 Scissors:"));
-        }
-        return gameChoices[input - 1];
-      }
-
-      function getComputerChoice() {
-        return gameChoices[Math.floor(Math.random() * 3)];
-      }
-
-      function isInvalid(input) {
-        return isNaN(input) || input < 1 || input > 3;
-      }
-    </script>
-  </body>
+  <body></body>
 </html>
