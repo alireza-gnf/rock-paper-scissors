@@ -6,5 +6,74 @@
     <title>Rock, Paper, Scissors</title>
     <script defer src="./script.js"></script>
   </head>
-  <body></body>
+  <body>
+    <div class="game-container">
+      <div class="player-section">
+        <div class="name-row">
+          <h2 class="name">You</h2>
+        </div>
+        <div class="lives-row">
+          <div class="lives-container">
+            <div class="life full"></div>
+            <div class="life empty"></div>
+            <div class="life empty"></div>
+            <div class="life empty"></div>
+            <div class="life empty"></div>
+          </div>
+        </div>
+        <div class="choice-row">
+          <div class="choice-container">
+            <div class="choice-text"></div>
+            <div class="choice-img"></div>
+          </div>
+        </div>
+      </div>
+      <div class="playing-section">
+        <div class="scores-row">
+          <div class="scores-container">
+            <div id="player-left" class="score">5</div>
+            <div class="score-sep"></div>
+            <div id="player-right" class="score">4</div>
+          </div>
+        </div>
+        <div class="judge-row">
+          <div class="judge-container">
+            <p class="round-result">You win!</p>
+            <p class="round-result-text">Rock beats Paper.</p>
+          </div>
+        </div>
+        <div class="controls-row">
+          <div class="controls-text"></div>
+          <div class="controls-container">
+            <button class="control">Rock</button>
+            <button class="control">Paper</button>
+            <button class="control">Scissors</button>
+          </div>
+          <div class="controls-timer">
+            <div class="timer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="player-section">
+        <div class="name-row">
+          <h2 class="name">Computer</h2>
+        </div>
+        <div class="lives-row">
+          <div class="lives-container">
+            <div class="life empty"></div>
+            <div class="life empty"></div>
+            <div class="life empty"></div>
+            <div class="life empty"></div>
+            <div class="life empty"></div>
+          </div>
+        </div>
+        <div class="choice-row">
+          <div class="choice-container">
+            <div class="choice-text"></div>
+            <div class="choice-img"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
