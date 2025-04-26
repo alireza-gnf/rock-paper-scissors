@@ -4,8 +4,26 @@ const SCISSORS = "Scissors";
 let gameChoices = [ROCK, PAPER, SCISSORS];
 let humanScore = 0;
 let computerScore = 0;
+const leftPlayer = {
+  lives: document.querySelectorAll("#left-player .life"),
+  choiceImg: document.querySelector("#left-player .choice-img"),
+  choiceText: document.querySelector("#left-player .choice-text"),
+  score: document.querySelector("#play-screen #score-left"),
+};
+const rightPlayer = {
+  lives: document.querySelectorAll("#right-player .life"),
+  choiceImg: document.querySelector("#right-player .choice-img img"),
+  choiceText: document.querySelector("#right-player .choice-text"),
+  score: document.querySelector("#play-screen #score-right"),
+};
+const playScreen = {
+  roundResult: document.querySelector("#play-screen .round-result"),
+  roundResultText: document.querySelector("#play-screen .round-result-text"),
+  playBtn: document.querySelector("#play-screen .play-button"),
+  choiceTimer: document.querySelector("#play-screen .timer"),
+};
+resetGame();
 
-playGame();
 function playGame() {
   resetGame();
   while (humanScore !== 5 && computerScore !== 5) {
@@ -42,9 +60,20 @@ function playRound(humanChoice, computerChoice) {
 }
 
 function resetGame() {
-  console.clear();
   humanScore = 0;
   computerScore = 0;
+  for (const life of [...leftPlayer.lives, ...rightPlayer.lives]) {
+    life.classList.remove("full");
+  }
+  leftPlayer.choiceImg.classList.add("hidden");
+  leftPlayer.choiceText.style.display = "";
+  leftPlayer.score.textContent = 0;
+  rightPlayer.choiceImg.classList.add("hidden");
+  rightPlayer.choiceText.style.display = "";
+  rightPlayer.score.textContent = 0;
+  playScreen.roundResult.textContent = "";
+  playScreen.roundResultText.textContent = "Rock, Paper, Scissors Game";
+  playScreen.playBtn.textContent = "Play";
 }
 
 function getHumanChoice() {

@@ -5,38 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rock, Paper, Scissors</title>
     <link rel="stylesheet" href="./styles.css" />
-    <!-- <script defer src="./script.js"></script> -->
+    <script defer src="./script.js"></script>
   </head>
   <body>
     <div class="game-container">
-      <div class="player-section">
+      <div id="left-player" class="player-section">
         <div class="name-row">
           <h2 class="name">You</h2>
         </div>
         <div class="lives-row">
-          <div class="lives-container">
-            <div class="life full"></div>
-            <div class="life full"></div>
-            <div class="life full"></div>
-            <div class="life full"></div>
-            <div class="life full"></div>
+          <div id="left-lives" class="lives-container">
+            <div class="life"></div>
+            <div class="life"></div>
+            <div class="life"></div>
+            <div class="life"></div>
+            <div class="life"></div>
           </div>
         </div>
         <div class="choice-row">
           <div class="choice-img">
-            <img src="./assets/rock.png" alt="Rock" />
+            <img class="hidden" src="./assets/rock.png" alt="Rock" />
           </div>
-          <div class="choice-text">Rock</div>
+          <div class="choice-text"></div>
         </div>
       </div>
-      <div class="playing-section">
+      <div id="play-screen" class="playing-section">
         <div class="scores-row">
-          <div id="score-left" class="score">5</div>
+          <div id="score-left" class="score">0</div>
           <div class="score-sep">-</div>
-          <div id="score-right" class="score">4</div>
+          <div id="score-right" class="score">0</div>
         </div>
-        <p class="round-result">You win!</p>
-        <p class="round-result-text">Rock beats Paper.</p>
+        <p class="round-result"></p>
+        <p class="round-result-text">Rock, Paper, Scissors Game</p>
         <button class="play-button">Play</button>
         <div class="controls-row">
           <div class="controls-text">Pick one:</div>
@@ -54,24 +54,24 @@
           <div class="timer">00:05</div>
         </div>
       </div>
-      <div class="player-section">
+      <div id="right-player" class="player-section">
         <div class="name-row">
           <h2 class="name">Computer</h2>
         </div>
         <div class="lives-row">
           <div class="lives-container">
-            <div class="life full"></div>
-            <div class="life full"></div>
-            <div class="life full"></div>
-            <div class="life full"></div>
+            <div class="life"></div>
+            <div class="life"></div>
+            <div class="life"></div>
+            <div class="life"></div>
             <div class="life"></div>
           </div>
         </div>
         <div class="choice-row">
           <div class="choice-img">
-            <img src="./assets/scissors.png" alt="Scissors" />
+            <img class="hidden" src="./assets/scissors.png" alt="Scissors" />
           </div>
-          <div class="choice-text">Scissors</div>
+          <div class="choice-text"></div>
         </div>
       </div>
     </div>
