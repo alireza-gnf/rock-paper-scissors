@@ -1,6 +1,6 @@
-const ROCK = "Rock";
-const PAPER = "Paper";
-const SCISSORS = "Scissors";
+const ROCK = "rock";
+const PAPER = "paper";
+const SCISSORS = "scissors";
 let gameChoices = [ROCK, PAPER, SCISSORS];
 let humanScore = 0;
 let computerScore = 0;
@@ -20,26 +20,15 @@ const playScreen = {
   roundResult: document.querySelector("#play-screen .round-result"),
   roundResultText: document.querySelector("#play-screen .round-result-text"),
   playBtn: document.querySelector("#play-screen .play-button"),
+  controlsText: document.querySelector("#play-screen .controls-text"),
   choiceTimer: document.querySelector("#play-screen .timer"),
+  controls: document.querySelector("#play-screen .controls-container"),
 };
-resetGame();
 
 function playGame() {
+  playScreen.playBtn.removeEventListener("click", playGame);
   resetGame();
-  while (humanScore !== 5 && computerScore !== 5) {
-    playRound(getHumanChoice(), getComputerChoice());
-    if (humanScore === 5 || computerScore === 5) {
-      if (humanScore === 5) {
-        console.log("Congratulations! You win.");
-      } else {
-        console.log("You lose!");
-      }
-      const playAgain = prompt("Play again [Y]es?").toLowerCase();
-      if (playAgain === "y" || playAgain === "yes") {
-        resetGame();
-      }
-    }
-  }
+  renderControls();
 }
 
 function playRound(humanChoice, computerChoice) {
@@ -76,13 +65,25 @@ function resetGame() {
   playScreen.playBtn.textContent = "Play";
 }
 
-function getHumanChoice() {
-  let input = parseInt(prompt("1 Rock, 2 Paper, 3 Scissors:"));
-  while (isInvalid(input)) {
-    console.log("Invalid input");
-    input = parseInt(prompt("1 Rock, 2 Paper, 3 Scissors:"));
-  }
-  return gameChoices[input - 1];
+function getHumanChoice() {}
+
+function renderControls() {
+  const randomIndices = [];
+  [...playScreen.controls.children]
+    .filter((child) => child.classList.contains("control"))
+    .forEach((label) => {
+      // This is to randomly order controls each time
+      let randomIndex;
+      do {
+        randomIndex = Math.floor(Math.random() * 3);
+      } while (randomIndices.includes(randomIndex));
+      randomIndices.push(randomIndex);
+      const randomPick = gameChoices[randomIndex];
+      label.setAttribute("for", `${randomPick}-btn`);
+      const img = label.querySelector("img");
+      img.setAttribute("src", `./assets/btn-${randomPick}.png`);
+      img.setAttribute("alt", randomPick);
+    });
 }
 
 function getComputerChoice() {
@@ -92,3 +93,5 @@ function getComputerChoice() {
 function isInvalid(input) {
   return isNaN(input) || input < 1 || input > 3;
 }
+
+playScreen.playBtn.addEventListener("click", playGame);
