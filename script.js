@@ -29,6 +29,8 @@ function playGame() {
   playScreen.playBtn.removeEventListener("click", playGame);
   resetGame();
   renderControls();
+  playScreen.controlsText.classList.add("countdown-animation");
+  playScreen.choiceTimer.classList.add("countdown-animation");
 }
 
 function playRound(humanChoice, computerChoice) {

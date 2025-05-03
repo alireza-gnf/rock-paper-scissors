@@ -173,6 +173,12 @@ input {
   font-size: 15px;
 }
 
+.countdown-animation {
+  font-weight: 900;
+  transform: scale(1.5);
+  transition: transform 0.2s ease-in-out;
+}
+
 .hidden {
   display: none;
 }
