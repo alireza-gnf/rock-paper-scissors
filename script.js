@@ -31,6 +31,12 @@ function playGame() {
   renderControls();
   playScreen.controlsText.classList.add("countdown-animation");
   playScreen.choiceTimer.classList.add("countdown-animation");
+  const intervalId = countDown(5, 1, (limitInSeconds) => {
+    playScreen.choiceTimer.textContent = `00:0${limitInSeconds}`;
+    if (!limitInSeconds) {
+      playScreen.controls.removeEventListener("click");
+    }
+  });
 }
 
 function playRound(humanChoice, computerChoice) {
@@ -68,6 +74,17 @@ function resetGame() {
 }
 
 function getHumanChoice() {}
+
+function countDown(limitInSeconds, delayInSeconds, func) {
+  const intervalId = setInterval(() => {
+    limitInSeconds -= 1;
+    if (!limitInSeconds) {
+      clearInterval(intervalId);
+    }
+    func(limitInSeconds);
+  }, delayInSeconds * 1000);
+  return intervalId;
+}
 
 function renderControls() {
   const randomIndices = [];
