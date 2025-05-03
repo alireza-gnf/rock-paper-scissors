@@ -148,16 +148,23 @@ img {
   text-align: center;
 }
 
-button {
+.controls-container img {
+  max-width: 70px;
+}
+
+button,
+.controls-container img {
   cursor: pointer;
 }
 
-button:hover {
-  outline: 2px solid black;
+.controls-container img:hover {
+  border-radius: 5px;
+  outline: 3px solid black;
+  padding: 3px;
 }
 
-button img {
-  max-width: 50px;
+input {
+  display: none;
 }
 
 .timer {
