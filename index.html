@@ -41,20 +41,25 @@
         <div class="controls-row">
           <div class="controls-text">Pick one:</div>
           <form class="controls-container">
-            <input type="radio" name="choice" id="rock-btn" />
+            <input type="radio" name="choice" value="rock" id="rock-btn" />
             <label for="rock-btn" class="control">
               <img src="./assets/btn-rock.png" alt="" />
             </label>
-            <input type="radio" name="choice" id="paper-btn" />
+            <input type="radio" name="choice" value="paper" id="paper-btn" />
             <label for="paper-btn" class="control">
               <img src="./assets/btn-paper.png" alt="" />
             </label>
-            <input type="radio" name="choice" id="scissors-btn" />
+            <input
+              type="radio"
+              name="choice"
+              value="scissors"
+              id="scissors-btn"
+            />
             <label for="scissors-btn" class="control">
               <img src="./assets/btn-scissors.png" alt="" />
             </label>
           </form>
-          <div class="timer">00:05</div>
+          <div class="timer hidden"></div>
         </div>
       </div>
       <div id="right-player" class="player-section">

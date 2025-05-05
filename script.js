@@ -28,32 +28,29 @@ const playScreen = {
 function playGame() {
   playScreen.playBtn.removeEventListener("click", playGame);
   resetGame();
+  playRound();
+}
+
+async function playRound() {
   renderControls();
   playScreen.controlsText.classList.add("countdown-animation");
   playScreen.choiceTimer.classList.add("countdown-animation");
-  const intervalId = countDown(5, 1, (limitInSeconds) => {
-    playScreen.choiceTimer.textContent = `00:0${limitInSeconds}`;
-    if (!limitInSeconds) {
-      playScreen.controls.removeEventListener("click");
-    }
-  });
-}
+  const playerChoice = await waitForPlayerChoice();
 
-function playRound(humanChoice, computerChoice) {
-  if (
-    (humanChoice === ROCK && computerChoice === SCISSORS) ||
-    (humanChoice === SCISSORS && computerChoice === PAPER) ||
-    (humanChoice === PAPER && computerChoice === ROCK)
-  ) {
-    console.log(`You win! ${humanChoice} beats ${computerChoice}`);
-    humanScore++;
-  } else if (humanChoice === computerChoice) {
-    console.log("It's a draw!");
-  } else {
-    console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
-    computerScore++;
-  }
-  console.log(`You: ${humanScore} Computer: ${computerScore}`);
+  // if (
+  //   (humanChoice === ROCK && computerChoice === SCISSORS) ||
+  //   (humanChoice === SCISSORS && computerChoice === PAPER) ||
+  //   (humanChoice === PAPER && computerChoice === ROCK)
+  // ) {
+  //   console.log(`You win! ${humanChoice} beats ${computerChoice}`);
+  //   humanScore++;
+  // } else if (humanChoice === computerChoice) {
+  //   console.log("It's a draw!");
+  // } else {
+  //   console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
+  //   computerScore++;
+  // }
+  // console.log(`You: ${humanScore} Computer: ${computerScore}`);
 }
 
 function resetGame() {
@@ -71,19 +68,6 @@ function resetGame() {
   playScreen.roundResult.textContent = "";
   playScreen.roundResultText.textContent = "Rock, Paper, Scissors Game";
   playScreen.playBtn.textContent = "Play";
-}
-
-function getHumanChoice() {}
-
-function countDown(limitInSeconds, delayInSeconds, func) {
-  const intervalId = setInterval(() => {
-    limitInSeconds -= 1;
-    if (!limitInSeconds) {
-      clearInterval(intervalId);
-    }
-    func(limitInSeconds);
-  }, delayInSeconds * 1000);
-  return intervalId;
 }
 
 function renderControls() {
@@ -105,12 +89,41 @@ function renderControls() {
     });
 }
 
-function getComputerChoice() {
+function waitForPlayerChoice(timeout = 3) {
+  return new Promise((resolve) => {
+    const interval = countDown(timeout, 1, (timeLeft) => {
+      playScreen.choiceTimer.textContent = `00:0${timeLeft}`;
+      if (!timeLeft) {
+        playScreen.controls.removeEventListener("click", onClick);
+        resolve(getRandomChoice());
+      }
+    });
+
+    playScreen.controls.addEventListener("click", onClick);
+    function onClick(e) {
+      if (e.target.matches("input")) {
+        clearInterval(interval);
+        playScreen.controls.removeEventListener("click", onClick);
+        const playerChoice = e.target.getAttribute("value");
+        resolve(playerChoice);
+      }
+    }
+  });
+}
+
+function getRandomChoice() {
   return gameChoices[Math.floor(Math.random() * 3)];
 }
 
-function isInvalid(input) {
-  return isNaN(input) || input < 1 || input > 3;
+function countDown(limitInSeconds, delayInSeconds, func) {
+  const intervalId = setInterval(() => {
+    limitInSeconds -= 1;
+    if (!limitInSeconds) {
+      clearInterval(intervalId);
+    }
+    func(limitInSeconds);
+  }, delayInSeconds * 1000);
+  return intervalId;
 }
 
 playScreen.playBtn.addEventListener("click", playGame);
