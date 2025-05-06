@@ -37,6 +37,7 @@ async function playRound() {
   playScreen.choiceTimer.classList.add("countdown-animation");
   playScreen.choiceTimer.classList.remove("hidden");
   const playerChoice = await waitForPlayerChoice();
+  console.log(playerChoice);
 
   // if (
   //   (humanChoice === ROCK && computerChoice === SCISSORS) ||
@@ -90,6 +91,10 @@ function renderControls() {
     });
 }
 
+function isValid(choice) {
+  return gameChoices.includes(choice);
+}
+
 function waitForPlayerChoice(timeout = 3) {
   return new Promise((resolve) => {
     playScreen.choiceTimer.textContent = `00:0${timeout}`;
@@ -104,10 +109,14 @@ function waitForPlayerChoice(timeout = 3) {
     playScreen.controls.addEventListener("click", onClick);
     function onClick(e) {
       if (e.target.matches("input")) {
-        clearInterval(interval);
-        playScreen.controls.removeEventListener("click", onClick);
         const playerChoice = e.target.getAttribute("value");
-        resolve(playerChoice);
+        if (isValid(playerChoice)) {
+          clearInterval(interval);
+          playScreen.controls.removeEventListener("click", onClick);
+          resolve(playerChoice);
+        } else {
+          alert("Invalid choice");
+        }
       }
     }
   });
