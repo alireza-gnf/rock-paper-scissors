@@ -171,6 +171,7 @@ input {
   text-align: center;
   font-weight: 900;
   font-size: 15px;
+  height: 1px;
 }
 
 .countdown-animation {

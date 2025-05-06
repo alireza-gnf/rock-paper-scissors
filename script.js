@@ -35,6 +35,7 @@ async function playRound() {
   renderControls();
   playScreen.controlsText.classList.add("countdown-animation");
   playScreen.choiceTimer.classList.add("countdown-animation");
+  playScreen.choiceTimer.classList.remove("hidden");
   const playerChoice = await waitForPlayerChoice();
 
   // if (
@@ -91,6 +92,7 @@ function renderControls() {
 
 function waitForPlayerChoice(timeout = 3) {
   return new Promise((resolve) => {
+    playScreen.choiceTimer.textContent = `00:0${timeout}`;
     const interval = countDown(timeout, 1, (timeLeft) => {
       playScreen.choiceTimer.textContent = `00:0${timeLeft}`;
       if (!timeLeft) {
