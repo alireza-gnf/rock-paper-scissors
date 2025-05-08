@@ -83,7 +83,6 @@ function prepareForRound() {
   renderControls();
   playScreen.controlsText.classList.add("countdown-animation");
   playScreen.choiceTimer.classList.add("countdown-animation");
-  playScreen.choiceTimer.classList.remove("hidden");
 }
 
 function getRoundResult(playerChoice, computerChoice) {
@@ -134,6 +133,8 @@ function resetGame() {
   playScreen.roundResultText.textContent = "";
   playScreen.finalResultText.textContent = "";
   playScreen.playBtn.textContent = "Play";
+  playScreen.choiceTimer.textContent = "";
+  playScreen.controlsText.textContent = "";
 }
 
 function renderControls() {
@@ -161,6 +162,7 @@ function isValid(choice) {
 
 function waitForPlayerChoice(timeout = 3) {
   return new Promise((resolve) => {
+    playScreen.controlsText.textContent = "Pick one:";
     playScreen.choiceTimer.textContent = `00:0${timeout}`;
     const interval = countDown(timeout, 1, (timeLeft) => {
       playScreen.choiceTimer.textContent = `00:0${timeLeft}`;
@@ -189,6 +191,8 @@ function waitForPlayerChoice(timeout = 3) {
       }
     }
   }).finally(() => {
+    playScreen.controlsText.textContent = "";
+    playScreen.choiceTimer.textContent = "";
     playScreen.controls.classList.toggle("opaque");
     playScreen.controls
       .querySelectorAll(".controls-img")
