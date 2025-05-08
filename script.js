@@ -68,6 +68,7 @@ async function playRound() {
       playScreen.roundResultText.textContent = `${computerChoiceUpper} beats ${playerChoiceUpper}`;
       break;
     case DRAW:
+      playScreen.roundResultText.textContent = "";
       playScreen.roundResult.textContent = "That's a Draw!";
       break;
   }
