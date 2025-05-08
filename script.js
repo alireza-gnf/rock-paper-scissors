@@ -33,12 +33,8 @@ function playGame() {
 }
 
 async function playRound() {
-  renderControls();
-  playScreen.controlsText.classList.add("countdown-animation");
-  playScreen.choiceTimer.classList.add("countdown-animation");
-  playScreen.choiceTimer.classList.remove("hidden");
+  prepareForRound();
   const playerChoice = await waitForPlayerChoice();
-  console.log(playerChoice);
 
   // if (
   //   (humanChoice === ROCK && computerChoice === SCISSORS) ||
@@ -54,6 +50,13 @@ async function playRound() {
   //   computerScore++;
   // }
   // console.log(`You: ${humanScore} Computer: ${computerScore}`);
+}
+
+function prepareForRound() {
+  renderControls();
+  playScreen.controlsText.classList.add("countdown-animation");
+  playScreen.choiceTimer.classList.add("countdown-animation");
+  playScreen.choiceTimer.classList.remove("hidden");
 }
 
 function resetGame() {
