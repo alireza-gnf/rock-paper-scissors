@@ -27,6 +27,7 @@ const playScreen = {
 
 function playGame() {
   playScreen.playBtn.removeEventListener("click", playGame);
+  playScreen.playBtn.classList.add("hidden");
   resetGame();
   playRound();
 }
