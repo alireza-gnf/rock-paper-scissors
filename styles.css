@@ -164,9 +164,7 @@ button,
 }
 
 .controls-container img:hover {
-  border-radius: 5px;
-  outline: 3px solid black;
-  padding: 3px;
+  padding: 4px;
 }
 
 input {
