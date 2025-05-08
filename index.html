@@ -4,74 +4,97 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rock, Paper, Scissors</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script defer src="./script.js"></script>
   </head>
   <body>
-    <script>
-      const ROCK = "Rock";
-      const PAPER = "Paper";
-      const SCISSORS = "Scissors";
-      let gameChoices = [ROCK, PAPER, SCISSORS];
-      let humanScore = 0;
-      let computerScore = 0;
-
-      playGame();
-      function playGame() {
-        resetGame();
-        while (humanScore !== 5 && computerScore !== 5) {
-          playRound(getHumanChoice(), getComputerChoice());
-          if (humanScore === 5 || computerScore === 5) {
-            if (humanScore === 5) {
-              console.log("Congratulations! You win.");
-            } else {
-              console.log("You lose!");
-            }
-            const playAgain = prompt("Play again [Y]es?").toLowerCase();
-            if (playAgain === "y" || playAgain === "yes") {
-              resetGame();
-            }
-          }
-        }
-      }
-
-      function playRound(humanChoice, computerChoice) {
-        if (
-          (humanChoice === ROCK && computerChoice === SCISSORS) ||
-          (humanChoice === SCISSORS && computerChoice === PAPER) ||
-          (humanChoice === PAPER && computerChoice === ROCK)
-        ) {
-          console.log(`You win! ${humanChoice} beats ${computerChoice}`);
-          humanScore++;
-        } else if (humanChoice === computerChoice) {
-          console.log("It's a draw!");
-        } else {
-          console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
-          computerScore++;
-        }
-        console.log(`You: ${humanScore} Computer: ${computerScore}`);
-      }
-
-      function resetGame() {
-        console.clear();
-        humanScore = 0;
-        computerScore = 0;
-      }
-
-      function getHumanChoice() {
-        let input = parseInt(prompt("1 Rock, 2 Paper, 3 Scissors:"));
-        while (isInvalid(input)) {
-          console.log("Invalid input");
-          input = parseInt(prompt("1 Rock, 2 Paper, 3 Scissors:"));
-        }
-        return gameChoices[input - 1];
-      }
-
-      function getComputerChoice() {
-        return gameChoices[Math.floor(Math.random() * 3)];
-      }
-
-      function isInvalid(input) {
-        return isNaN(input) || input < 1 || input > 3;
-      }
-    </script>
+    <div class="game-container">
+      <div id="left-player" class="player-section">
+        <div class="name-row">
+          <h2 class="name">You</h2>
+        </div>
+        <div class="lives-row">
+          <div id="left-lives" class="lives-container">
+            <div class="life"></div>
+            <div class="life"></div>
+            <div class="life"></div>
+            <div class="life"></div>
+            <div class="life"></div>
+          </div>
+        </div>
+        <div class="choice-row">
+          <div class="choice-img">
+            <img class="hidden" src="./assets/rock.png" alt="Rock" />
+          </div>
+          <div class="choice-text"></div>
+        </div>
+      </div>
+      <div id="play-screen" class="playing-section">
+        <div class="scores-row">
+          <div id="score-left" class="score">0</div>
+          <div class="score-sep">-</div>
+          <div id="score-right" class="score">0</div>
+        </div>
+        <p class="round-result"></p>
+        <p class="final-result-text"></p>
+        <p class="round-result-text">Rock, Paper, Scissors Game</p>
+        <button class="play-button">Play</button>
+        <div class="controls-row">
+          <div class="controls-text"></div>
+          <form class="controls-container opaque">
+            <input type="radio" name="choice" value="rock" id="rock-btn" />
+            <label for="rock-btn" class="control">
+              <img
+                class="controls-img not-clickable"
+                src="./assets/btn-rock.png"
+                alt=""
+              />
+            </label>
+            <input type="radio" name="choice" value="paper" id="paper-btn" />
+            <label for="paper-btn" class="control">
+              <img
+                class="controls-img not-clickable"
+                src="./assets/btn-paper.png"
+                alt=""
+              />
+            </label>
+            <input
+              type="radio"
+              name="choice"
+              value="scissors"
+              id="scissors-btn"
+            />
+            <label for="scissors-btn" class="control">
+              <img
+                class="controls-img not-clickable"
+                src="./assets/btn-scissors.png"
+                alt=""
+              />
+            </label>
+          </form>
+          <div class="timer"></div>
+        </div>
+      </div>
+      <div id="right-player" class="player-section">
+        <div class="name-row">
+          <h2 class="name">Computer</h2>
+        </div>
+        <div class="lives-row">
+          <div class="lives-container">
+            <div class="life"></div>
+            <div class="life"></div>
+            <div class="life"></div>
+            <div class="life"></div>
+            <div class="life"></div>
+          </div>
+        </div>
+        <div class="choice-row">
+          <div class="choice-img">
+            <img class="hidden" src="./assets/scissors.png" alt="Scissors" />
+          </div>
+          <div class="choice-text"></div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

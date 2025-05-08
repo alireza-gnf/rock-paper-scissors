@@ -1,0 +1,201 @@
+:root {
+  --life-color: black;
+  --background-color: white;
+  --player-turn-color: rgb(62, 130, 233);
+}
+
+*::before,
+*::after,
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  background-color: var(--background-color);
+}
+
+.game-container {
+  min-height: 500px;
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+}
+
+.game-container > * {
+  flex: 1 0 300px;
+}
+
+.player-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.name-row {
+  padding-top: 15px;
+}
+
+.lives-row {
+  padding-top: 5px;
+}
+
+.lives-container {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.life {
+  width: 25px;
+  min-height: 18px;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: transparent;
+}
+
+.full {
+  background-color: var(--life-color);
+}
+
+.choice-row {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.choice-text {
+  font-size: 25px;
+  font-weight: 900;
+  text-align: center;
+}
+
+.choice-img > img {
+  max-width: 100px;
+}
+
+img {
+  height: auto;
+  width: auto;
+  object-fit: contain;
+}
+
+.playing-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.scores-row {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 20px;
+  gap: 10px;
+}
+
+.score,
+.score-sep {
+  font-weight: 900;
+  font-size: 35px;
+}
+
+.round-result {
+  margin-top: 40px;
+  font-size: 30px;
+  font-weight: 900;
+}
+
+.final-result-text {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.round-result-text {
+  margin-top: 60px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.play-button {
+  margin-top: 30px;
+  padding: 10px 30px;
+  background-color: gold;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 3px 3px 0 0 var(--player-turn-color);
+  position: relative;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.play-button:hover {
+  box-shadow: 2px 2px 0 0 var(--player-turn-color);
+  outline: none;
+  left: 2px;
+  top: 2px;
+}
+
+.controls-row {
+  position: absolute;
+  bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.opaque {
+  opacity: 30%;
+}
+
+.controls-text {
+  font-size: 15px;
+  text-align: center;
+}
+
+.controls-img {
+  max-width: 70px;
+}
+
+button,
+.controls-img {
+  cursor: pointer;
+}
+
+.controls-img:hover {
+  padding: 4px;
+}
+
+.not-clickable {
+  cursor: not-allowed;
+}
+
+.not-clickable:hover {
+  padding: 0;
+}
+
+input {
+  display: none;
+}
+
+.timer {
+  text-align: center;
+  font-weight: 900;
+  font-size: 15px;
+  height: 1px;
+}
+
+.countdown-animation {
+  font-weight: 900;
+  transform: scale(1.5);
+  transition: transform 0.2s ease-in-out;
+}
+
+.hidden {
+  display: none;
+}
