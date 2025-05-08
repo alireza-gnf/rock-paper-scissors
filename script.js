@@ -170,6 +170,7 @@ function waitForPlayerChoice(timeout = 3) {
       }
     });
 
+    playScreen.controls.classList.toggle("opaque");
     playScreen.controls
       .querySelectorAll(".controls-img")
       .forEach((ctrl) => ctrl.classList.toggle("not-clickable"));
@@ -188,6 +189,7 @@ function waitForPlayerChoice(timeout = 3) {
       }
     }
   }).finally(() => {
+    playScreen.controls.classList.toggle("opaque");
     playScreen.controls
       .querySelectorAll(".controls-img")
       .forEach((ctrl) => ctrl.classList.toggle("not-clickable"));

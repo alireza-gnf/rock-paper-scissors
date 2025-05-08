@@ -149,6 +149,10 @@ img {
   gap: 10px;
 }
 
+.opaque {
+  opacity: 30%;
+}
+
 .controls-text {
   font-size: 15px;
   text-align: center;
