@@ -39,7 +39,7 @@ function playGame() {
 }
 
 async function playRound() {
-  prepareForRound();
+  renderControls();
   const playerChoice = await waitForPlayerChoice();
   const computerChoice = getRandomChoice();
   const playerChoiceUpper = playerChoice.toUpperCase();
@@ -78,12 +78,6 @@ async function playRound() {
   } else {
     playRound();
   }
-}
-
-function prepareForRound() {
-  renderControls();
-  playScreen.controlsText.classList.add("countdown-animation");
-  playScreen.choiceTimer.classList.add("countdown-animation");
 }
 
 function getRoundResult(playerChoice, computerChoice) {
@@ -165,6 +159,8 @@ function waitForPlayerChoice(timeout = 3) {
   return new Promise((resolve) => {
     playScreen.controlsText.textContent = "Pick one:";
     playScreen.choiceTimer.textContent = `00:0${timeout}`;
+    playScreen.controlsText.classList.add("countdown-animation");
+    playScreen.choiceTimer.classList.add("countdown-animation");
     const interval = countDown(timeout, 1, (timeLeft) => {
       playScreen.choiceTimer.textContent = `00:0${timeLeft}`;
       if (!timeLeft) {
@@ -194,6 +190,8 @@ function waitForPlayerChoice(timeout = 3) {
   }).finally(() => {
     playScreen.controlsText.textContent = "";
     playScreen.choiceTimer.textContent = "";
+    playScreen.controlsText.classList.remove("countdown-animation");
+    playScreen.choiceTimer.classList.remove("countdown-animation");
     playScreen.controls.classList.toggle("opaque");
     playScreen.controls
       .querySelectorAll(".controls-img")
