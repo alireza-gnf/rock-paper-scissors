@@ -6,7 +6,7 @@ let humanScore = 0;
 let computerScore = 0;
 const leftPlayer = {
   lives: document.querySelectorAll("#left-player .life"),
-  choiceImg: document.querySelector("#left-player .choice-img"),
+  choiceImg: document.querySelector("#left-player .choice-img img"),
   choiceText: document.querySelector("#left-player .choice-text"),
   score: document.querySelector("#play-screen #score-left"),
 };
