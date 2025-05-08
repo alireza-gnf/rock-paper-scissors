@@ -125,10 +125,10 @@ function resetGame() {
     life.classList.remove("full");
   }
   leftPlayer.choiceImg.classList.add("hidden");
-  leftPlayer.choiceText.style.display = "";
+  leftPlayer.choiceText.textContent = "";
   leftPlayer.score.textContent = 0;
   rightPlayer.choiceImg.classList.add("hidden");
-  rightPlayer.choiceText.style.display = "";
+  rightPlayer.choiceText.textContent = "";
   rightPlayer.score.textContent = 0;
   playScreen.roundResult.textContent = "";
   playScreen.roundResultText.textContent = "";
