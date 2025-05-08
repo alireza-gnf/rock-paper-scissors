@@ -69,7 +69,7 @@ function resetGame() {
   rightPlayer.choiceText.style.display = "";
   rightPlayer.score.textContent = 0;
   playScreen.roundResult.textContent = "";
-  playScreen.roundResultText.textContent = "Rock, Paper, Scissors Game";
+  playScreen.roundResultText.textContent = "";
   playScreen.playBtn.textContent = "Play";
 }
 
