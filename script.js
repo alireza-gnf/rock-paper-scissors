@@ -25,6 +25,8 @@ const playScreen = {
   controls: document.querySelector("#play-screen .controls-container"),
 };
 
+playScreen.playBtn.addEventListener("click", playGame);
+
 function playGame() {
   playScreen.playBtn.removeEventListener("click", playGame);
   playScreen.playBtn.classList.add("hidden");
@@ -140,5 +142,3 @@ function countDown(limitInSeconds, delayInSeconds, func) {
   }, delayInSeconds * 1000);
   return intervalId;
 }
-
-playScreen.playBtn.addEventListener("click", playGame);
