@@ -43,6 +43,14 @@ async function playRound() {
   const computerChoice = getRandomChoice();
   const playerChoiceUpper = playerChoice.toUpperCase();
   const computerChoiceUpper = computerChoice.toUpperCase();
+  leftPlayer.choiceImg.setAttribute("src", `./assets/${playerChoice}.png`);
+  leftPlayer.choiceImg.setAttribute("alt", playerChoice);
+  leftPlayer.choiceImg.classList.remove("hidden");
+  leftPlayer.choiceText.textContent = playerChoiceUpper;
+  rightPlayer.choiceImg.setAttribute("src", `./assets/${computerChoice}.png`);
+  rightPlayer.choiceImg.setAttribute("alt", computerChoice);
+  rightPlayer.choiceImg.classList.remove("hidden");
+  rightPlayer.choiceText.textContent = computerChoiceUpper;
   switch (getRoundResult(playerChoice, computerChoice)) {
     case PLAYER_WON:
       playerScore++;
