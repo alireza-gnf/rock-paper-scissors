@@ -2,6 +2,9 @@ const ROCK = "rock";
 const PAPER = "paper";
 const SCISSORS = "scissors";
 let gameChoices = [ROCK, PAPER, SCISSORS];
+const PLAYER_WON = "player";
+const COMPUTER_WON = "computer";
+const DRAW = "draw";
 let humanScore = 0;
 let computerScore = 0;
 const leftPlayer = {
@@ -37,21 +40,15 @@ function playGame() {
 async function playRound() {
   prepareForRound();
   const playerChoice = await waitForPlayerChoice();
-
-  // if (
-  //   (humanChoice === ROCK && computerChoice === SCISSORS) ||
-  //   (humanChoice === SCISSORS && computerChoice === PAPER) ||
-  //   (humanChoice === PAPER && computerChoice === ROCK)
-  // ) {
-  //   console.log(`You win! ${humanChoice} beats ${computerChoice}`);
-  //   humanScore++;
-  // } else if (humanChoice === computerChoice) {
-  //   console.log("It's a draw!");
-  // } else {
-  //   console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
-  //   computerScore++;
-  // }
-  // console.log(`You: ${humanScore} Computer: ${computerScore}`);
+  const computerChoice = getRandomChoice();
+  switch (getRoundResult(playerChoice, computerChoice)) {
+    case PLAYER_WON:
+      break;
+    case COMPUTER_WON:
+      break;
+    case DRAW:
+      break;
+  }
 }
 
 function prepareForRound() {
@@ -59,6 +56,20 @@ function prepareForRound() {
   playScreen.controlsText.classList.add("countdown-animation");
   playScreen.choiceTimer.classList.add("countdown-animation");
   playScreen.choiceTimer.classList.remove("hidden");
+}
+
+function getRoundResult(playerChoice, computerChoice) {
+  if (
+    (playerChoice === ROCK && computerChoice === SCISSORS) ||
+    (playerChoice === SCISSORS && computerChoice === PAPER) ||
+    (playerChoice === PAPER && computerChoice === ROCK)
+  ) {
+    return PLAYER_WON;
+  } else if (playerChoice === computerChoice) {
+    return DRAW;
+  } else {
+    return COMPUTER_WON;
+  }
 }
 
 function resetGame() {
