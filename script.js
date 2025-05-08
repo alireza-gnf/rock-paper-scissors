@@ -41,12 +41,25 @@ async function playRound() {
   prepareForRound();
   const playerChoice = await waitForPlayerChoice();
   const computerChoice = getRandomChoice();
+  const playerChoiceUpper = playerChoice.toUpperCase();
+  const computerChoiceUpper = computerChoice.toUpperCase();
   switch (getRoundResult(playerChoice, computerChoice)) {
     case PLAYER_WON:
+      playerScore++;
+      leftPlayer.score.textContent = playerScore;
+      leftPlayer.lives[playerScore - 1].classList.add("full");
+      playScreen.roundResult.textContent = "You Win!";
+      playScreen.roundResultText.textContent = `${playerChoiceUpper} beats ${computerChoiceUpper}`;
       break;
     case COMPUTER_WON:
+      computerScore++;
+      rightPlayer.score.textContent = computerScore;
+      rightPlayer.lives[computerScore - 1].classList.add("full");
+      playScreen.roundResult.textContent = "Computer Wins!";
+      playScreen.roundResultText.textContent = `${computerChoiceUpper} beats ${playerChoiceUpper}`;
       break;
     case DRAW:
+      playScreen.roundResult.textContent = "That's a Draw!";
       break;
   }
 }
