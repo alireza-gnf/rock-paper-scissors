@@ -5,7 +5,7 @@ let gameChoices = [ROCK, PAPER, SCISSORS];
 const PLAYER_WON = "player";
 const COMPUTER_WON = "computer";
 const DRAW = "draw";
-let humanScore = 0;
+let playerScore = 0;
 let computerScore = 0;
 const leftPlayer = {
   lives: document.querySelectorAll("#left-player .life"),
@@ -73,7 +73,7 @@ function getRoundResult(playerChoice, computerChoice) {
 }
 
 function resetGame() {
-  humanScore = 0;
+  playerScore = 0;
   computerScore = 0;
   for (const life of [...leftPlayer.lives, ...rightPlayer.lives]) {
     life.classList.remove("full");
