@@ -73,6 +73,7 @@ async function playRound() {
   }
 
   if (isGameFinished()) {
+    updateFinalResult();
   } else {
     playRound();
   }
@@ -101,6 +102,20 @@ function getRoundResult(playerChoice, computerChoice) {
 
 function isGameFinished() {
   return playerScore === 5 || computerScore === 5;
+}
+
+function updateFinalResult() {
+  if (playerScore === 5) {
+    playScreen.roundResult.textContent = "You Won The Game!";
+    playScreen.finalResultText.textContent = "Could You Win Again?";
+  } else {
+    playScreen.roundResult.textContent = "You Lost The Game!";
+    playScreen.finalResultText.textContent = "Maybe Next Time.";
+  }
+
+  playScreen.playBtn.textContent = "Play Again";
+  playScreen.playBtn.classList.remove("hidden");
+  playScreen.playBtn.addEventListener("click", playGame);
 }
 
 function resetGame() {
