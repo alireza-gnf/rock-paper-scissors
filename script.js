@@ -70,6 +70,9 @@ async function playRound() {
       playScreen.roundResult.textContent = "That's a Draw!";
       break;
   }
+
+  if (isGameFinished()) {
+  }
 }
 
 function prepareForRound() {
@@ -91,6 +94,10 @@ function getRoundResult(playerChoice, computerChoice) {
   } else {
     return COMPUTER_WON;
   }
+}
+
+function isGameFinished() {
+  return playerScore === 5 || computerScore === 5;
 }
 
 function resetGame() {
