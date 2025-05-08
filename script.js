@@ -72,6 +72,8 @@ async function playRound() {
   }
 
   if (isGameFinished()) {
+  } else {
+    playRound();
   }
 }
 
