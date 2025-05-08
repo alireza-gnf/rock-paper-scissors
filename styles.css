@@ -110,8 +110,14 @@ img {
   font-weight: 900;
 }
 
+.final-result-text {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
 .round-result-text {
-  margin-top: 90px;
+  margin-top: 60px;
   font-size: 20px;
   font-weight: 600;
 }

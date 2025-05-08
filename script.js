@@ -22,6 +22,7 @@ const rightPlayer = {
 const playScreen = {
   roundResult: document.querySelector("#play-screen .round-result"),
   roundResultText: document.querySelector("#play-screen .round-result-text"),
+  finalResultText: document.querySelector("#play-screen .final-result-text"),
   playBtn: document.querySelector("#play-screen .play-button"),
   controlsText: document.querySelector("#play-screen .controls-text"),
   choiceTimer: document.querySelector("#play-screen .timer"),
@@ -116,6 +117,7 @@ function resetGame() {
   rightPlayer.score.textContent = 0;
   playScreen.roundResult.textContent = "";
   playScreen.roundResultText.textContent = "";
+  playScreen.finalResultText.textContent = "";
   playScreen.playBtn.textContent = "Play";
 }
 
