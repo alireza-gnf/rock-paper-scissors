@@ -154,17 +154,25 @@ img {
   text-align: center;
 }
 
-.controls-container img {
+.controls-img {
   max-width: 70px;
 }
 
 button,
-.controls-container img {
+.controls-img {
   cursor: pointer;
 }
 
-.controls-container img:hover {
+.controls-img:hover {
   padding: 4px;
+}
+
+.not-clickable {
+  cursor: not-allowed;
+}
+
+.not-clickable:hover {
+  padding: 0;
 }
 
 input {

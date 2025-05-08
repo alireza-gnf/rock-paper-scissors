@@ -170,7 +170,11 @@ function waitForPlayerChoice(timeout = 3) {
       }
     });
 
+    playScreen.controls
+      .querySelectorAll(".controls-img")
+      .forEach((ctrl) => ctrl.classList.toggle("not-clickable"));
     playScreen.controls.addEventListener("click", onClick);
+
     function onClick(e) {
       if (e.target.matches("input")) {
         const playerChoice = e.target.getAttribute("value");
@@ -183,6 +187,10 @@ function waitForPlayerChoice(timeout = 3) {
         }
       }
     }
+  }).finally(() => {
+    playScreen.controls
+      .querySelectorAll(".controls-img")
+      .forEach((ctrl) => ctrl.classList.toggle("not-clickable"));
   });
 }
 
